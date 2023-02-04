@@ -1,0 +1,30 @@
+- Men : Clothing, Shoes, Accessory.
+	- Clothing :  https://www.wconcept.co.kr/Men/0010
+	- Shoes : https://www.wconcept.co.kr/Men/0020
+	- Accessory : https://www.wconcept.co.kr/Men/0040
+- Women : Clothing, Shoes, Accessory.
+	- Clothing : https://www.wconcept.co.kr/Women/0010
+	- Shoes : https://www.wconcept.co.kr/Women/0020
+	- Accessory : https://www.wconcept.co.kr/Women/0030
+- Category : Clothing, Shoes, Accessory
+- Subcategory : New, exclusive, top, one piece, etc. 
+- Category API : https://search-api.29cm.co.kr/api/v4/products/category/?categoryLargeCode=272100100&categorySmallCode=&count=50&page=1
+- [x] Verify if Section All contains all the products containing in New, Exclusive, Top,...... and all the subcategories.
+- Product Features.
+	- [x] Product ID.
+	- [x] Category.
+	- [x] Title.
+	- [x] Brand.
+	- [x] Gender.
+	- [x] MRP.
+	- [x] Price.
+	- [x] Rating.
+	- [x] Reviews.
+	- [x] Product URL.
+	- [x] Image URL.
+	- [x] Color.
+	- [x] Material.
+	- [x] Size.
+	- [x] Stock Status. (Unable to find)
+	- [x] Model Number. (Unable to find)
+	- [x] Product Description. (Description in Image, cannot find.)

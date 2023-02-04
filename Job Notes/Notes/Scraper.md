@@ -1,0 +1,1 @@
+- Make use of user agents and headers by taking them from the website so that the website considers you as a person and not as a bot or device.

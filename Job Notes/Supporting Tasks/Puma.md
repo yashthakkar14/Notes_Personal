@@ -1,0 +1,15 @@
+- Workflow.
+	- [ ] Get the catalogue page by inserting the search text.
+	- [ ] Get the product page for each of the product urls from the catalogue page.
+	- [ ] Get the product features.
+- Features to Extract
+	- [ ] Product Title.
+	- [ ] Category.
+	- [ ] Price.
+	- [ ] MRP.
+	- [ ] Product URL.
+	- [ ] Color.
+	- [ ] Material.
+	- [ ] Rating.
+	- [ ] Model No.
+	- [ ] Size : Pipe separated (|).

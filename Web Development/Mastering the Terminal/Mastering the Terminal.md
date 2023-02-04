@@ -1,0 +1,68 @@
+### Notes
+
+- **Why do you need to learn the terminal ?**
+	- Speed (Develop Faster)
+	- Access
+		- The terminal provides a mainline into the heart of our computer giving us access to areas we normally don't interact with. 
+	- Tools
+		- Many of the tools we need are installed and used via the command line. We don't have much of a choice.
+- **Confusing Terminologies**
+	- Terminal
+		- A text based interface to your computer. Originally a physical object but we now use software based terminals.
+	- Shell
+		- The program running on the terminal.
+	- Bash
+		- One of the most popular shells.
+- **Different Commands**
+	- pwd
+		- Returns the current directory we are present in.
+	- ls
+		- Lists all the files and folders present in the current directory.
+	- cd
+		- Stands for change directory.
+		- Used to move forward or backward in the folders.
+		- Ways to use cd command
+			- Go forward
+				- cd \<foldername\>	
+			- Go backward
+				- cd .. - To traverse backward in a folder.
+				- cd ../ ../ - To traverse backward multiple times.
+			- Go to home directory
+				- cd / - To traverse to the home directory.
+	- mkdir
+		- mkdir \<folder_name\> (Create a single folder)
+		- mkdir \<folder_name\> \<folder_name\> ..... 
+		(Create multiple folders at once)
+		- mkdir ../Yash (Can make directories at different locations)
+		- mkdir Yash/Yash2 Yash3 (Yash 2 in Yash folder and Yash 3 along side Yash folder)
+	- man 
+		- Gives information about another commands.
+		- Type 'q' to get out of the man command
+	- flags
+		- -e, -r, -m, -s, etc. are all flags. They are sometimes used along with the commands and similar to the arguments.
+		- Example ls -a , ls -l
+		- Can combine multiple flags as well such as ls -la
+	- touch
+	- Used to create files. 
+	- touch \<file_name\>
+	- Example : touch yash.html yash.css yash.js
+	- rm
+	- Used to delete files. (Not folders)
+	- Need to be careful when using it as deleting a file using 'rm' command deletes the file permanently.
+	- rm yash.css yash.html.
+	- rmdir
+	- Used to remove an empty folder.
+	- Can remove a non-empty folder using flag.
+	- rm -rf yash
+- **Absolute Paths vs Relative Paths**
+	- Relative path is the path which is relative to where we are currently that is the current directory.
+	- Relative path can be traversed only from the current directory and not from anywhere.
+	- Absolute path is the path containing exact location and starts with '/'.
+	- Absolute path can be traversed from any directory.
+	- 
+---
+### References
+---
+PDF for terminal - [[1.1 WDB Terminal.pdf]]
+
+---

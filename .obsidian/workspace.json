@@ -1,0 +1,177 @@
+{
+  "main": {
+    "id": "d8c003856b7c5c12",
+    "type": "split",
+    "children": [
+      {
+        "id": "aa69431e46074a15",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0fce89a5c0aecac3",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Quick Notes.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "e77c78ac1e3583b9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Job Notes/Main Tasks/(CURRENT) Logitech Scrapers.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "5bb85901fefea541",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Quick Notes.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "27597235fa4bb153",
+    "type": "split",
+    "children": [
+      {
+        "id": "c52d37849abf74cb",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a9a1ef19ddabc335",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "1be0b0f02df8d6b0",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "46311a76994f7eab",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 353.50418853759766
+  },
+  "right": {
+    "id": "50f6e7262c14ebc1",
+    "type": "split",
+    "children": [
+      {
+        "id": "90e75ae74d5bbdea",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2266ccee9c7eb58a",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Quick Notes.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "0857d4d6b0d2fe66",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Quick Notes.md"
+              }
+            }
+          },
+          {
+            "id": "99a019bd9838d465",
+            "type": "leaf",
+            "state": {
+              "type": "todo",
+              "state": {}
+            }
+          }
+        ],
+        "currentTab": 2
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "markdown-importer:Open format converter": false,
+      "audio-recorder:Start/stop recording": false
+    }
+  },
+  "active": "0fce89a5c0aecac3",
+  "lastOpenFiles": [
+    "Job Notes/Main Tasks/(CURRENT) Logitech Scrapers.md",
+    "Quick Notes.md",
+    "Job Notes/Supporting Tasks/Croma Scraper.md",
+    "Job Notes/Main Tasks/(NOT STARTED) Dealshare Project.md",
+    "Job Notes/Main Tasks/(NOT STARTED) Search Tool.md",
+    "Daily Notes/February/04-02-2023.md",
+    "Daily Notes/February/03-02-2023.md",
+    "Daily Notes/February/02-02-2023.md",
+    "Job Notes/Main Tasks/(CURRENT) Varietz API.md",
+    "Job Notes/Main Tasks/(DONE) KisanKonnect Weekly Report.md"
+  ]
+}

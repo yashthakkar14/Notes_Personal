@@ -1,0 +1,10 @@
+- Data Points
+	- [x] Search Text.
+	- [x] Website.
+	- [x] Product ID.
+	- [x] Title
+	- [x] Product URL.
+	- [x] Rank.
+	- [x] Price.
+	- [x] MRP.
+	- [x] Rating.

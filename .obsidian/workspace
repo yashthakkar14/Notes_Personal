@@ -1,0 +1,130 @@
+{
+  "main": {
+    "id": "d8c003856b7c5c12",
+    "type": "split",
+    "children": [
+      {
+        "id": "0df676862f7ea73d",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Personal/Daily Notes/April/23-04-2022.md",
+            "mode": "source",
+            "backlinks": false,
+            "source": false
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "27597235fa4bb153",
+    "type": "split",
+    "children": [
+      {
+        "id": "c52d37849abf74cb",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a9a1ef19ddabc335",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "1be0b0f02df8d6b0",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "46311a76994f7eab",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 312
+  },
+  "right": {
+    "id": "50f6e7262c14ebc1",
+    "type": "split",
+    "children": [
+      {
+        "id": "90e75ae74d5bbdea",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2266ccee9c7eb58a",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Personal/Daily Notes/April/23-04-2022.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "0857d4d6b0d2fe66",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Personal/Daily Notes/April/23-04-2022.md"
+              }
+            }
+          },
+          {
+            "id": "99a019bd9838d465",
+            "type": "leaf",
+            "state": {
+              "type": "todo",
+              "state": {}
+            }
+          }
+        ],
+        "currentTab": 2
+      }
+    ],
+    "direction": "horizontal",
+    "width": 303
+  },
+  "active": "0df676862f7ea73d",
+  "lastOpenFiles": [
+    "Personal/Daily Notes/April/23-04-2022.md",
+    "Personal/Daily Notes/April/08-04-2022.md",
+    "Personal/Daily Notes/April/06-04-2022.md",
+    "Google UX Design/UX Design.md",
+    "Web Development/CSS/Basics/Basics.md",
+    "Web Development/CSS/Basics/Colors.md",
+    "Web Development/CSS/Basics/Including Styles.md",
+    "Web Development/CSS/Basics/Text Properties.md",
+    "R Programming/Data Visualization/Introduction.md",
+    "Web Development/Mastering the Terminal/assets/1.1 WDB Terminal.pdf"
+  ]
+}

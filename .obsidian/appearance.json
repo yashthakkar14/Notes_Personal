@@ -1,0 +1,10 @@
+{
+  "baseFontSize": 17,
+  "cssTheme": "Encore",
+  "baseFontSizeAction": true,
+  "translucency": false,
+  "accentColor": "",
+  "enabledCssSnippets": [
+    "obsidian-pagebreaks"
+  ]
+}

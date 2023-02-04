@@ -1,0 +1,11 @@
+- data processing
+- Varietz
+- django_app
+- rest framework, corsheaders
+- authapp - user authentication functions
+- apiv1 - all the apis
+	- search products.
+	- food product master.
+	- document for each product.
+	- site id for varietz 162.
+	- full text index

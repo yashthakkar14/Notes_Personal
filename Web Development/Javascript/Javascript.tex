@@ -1,0 +1,2723 @@
+%%
+% Copyright (c) 2017 - 2021, Pascal Wagler;
+% Copyright (c) 2014 - 2021, John MacFarlane
+%
+% All rights reserved.
+%
+% Redistribution and use in source and binary forms, with or without
+% modification, are permitted provided that the following conditions
+% are met:
+%
+% - Redistributions of source code must retain the above copyright
+% notice, this list of conditions and the following disclaimer.
+%
+% - Redistributions in binary form must reproduce the above copyright
+% notice, this list of conditions and the following disclaimer in the
+% documentation and/or other materials provided with the distribution.
+%
+% - Neither the name of John MacFarlane nor the names of other
+% contributors may be used to endorse or promote products derived
+% from this software without specific prior written permission.
+%
+% THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+% "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+% LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+% FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+% COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+% INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+% BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+% LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+% CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+% LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+% ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+% POSSIBILITY OF SUCH DAMAGE.
+%%
+
+%%
+% This is the Eisvogel pandoc LaTeX template.
+%
+% For usage information and examples visit the official GitHub page:
+% https://github.com/Wandmalfarbe/pandoc-latex-template
+%%
+
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames*,x11names*,table}{xcolor}
+%
+\documentclass[
+  paper=a4,
+  ,captions=tableheading
+]{scrartcl}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{setspace}
+\setstretch{1.2}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\definecolor{default-linkcolor}{HTML}{A50000}
+\definecolor{default-filecolor}{HTML}{A50000}
+\definecolor{default-citecolor}{HTML}{4077C0}
+\definecolor{default-urlcolor}{HTML}{4077C0}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  hidelinks,
+  breaklinks=true,
+  pdfcreator={LaTeX via pandoc with the Eisvogel template}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=2.5cm,includehead=true,includefoot=true,centering,]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+
+% Workaround/bugfix from jannick0.
+% See https://github.com/jgm/pandoc/issues/4302#issuecomment-360669013)
+% or https://github.com/Wandmalfarbe/pandoc-latex-template/issues/2
+%
+% Redefine the verbatim environment 'Highlighting' to break long lines (with
+% the help of fvextra). Redefinition is necessary because it is unlikely that
+% pandoc includes fvextra in the default template.
+\usepackage{fvextra}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,fontsize=\small,commandchars=\\\{\}}
+
+% add backlinks to footnote references, cf. https://tex.stackexchange.com/questions/302266/make-footnote-clickable-both-ways
+\usepackage{footnotebackref}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+
+% Make use of float-package and set default placement for figures to H.
+% The option H means 'PUT IT HERE' (as  opposed to the standard h option which means 'You may put it here if you like').
+\usepackage{float}
+\floatplacement{figure}{H}
+
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\author{}
+\date{}
+
+
+
+%%
+%% added
+%%
+
+%
+% language specification
+%
+% If no language is specified, use English as the default main document language.
+%
+
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[shorthands=off,main=english]{babel}
+\else
+    % Workaround for bug in Polyglossia that breaks `\familydefault` when `\setmainlanguage` is used.
+  % See https://github.com/Wandmalfarbe/pandoc-latex-template/issues/8
+  % See https://github.com/reutenauer/polyglossia/issues/186
+  % See https://github.com/reutenauer/polyglossia/issues/127
+  \renewcommand*\familydefault{\sfdefault}
+    % load polyglossia as late as possible as it *could* call bidi if RTL lang (e.g. Hebrew or Arabic)
+  \usepackage{polyglossia}
+  \setmainlanguage[]{english}
+\fi
+
+
+
+%
+% for the background color of the title page
+%
+
+%
+% break urls
+%
+\PassOptionsToPackage{hyphens}{url}
+
+%
+% When using babel or polyglossia with biblatex, loading csquotes is recommended
+% to ensure that quoted texts are typeset according to the rules of your main language.
+%
+\usepackage{csquotes}
+
+%
+% captions
+%
+\definecolor{caption-color}{HTML}{777777}
+\usepackage[font={stretch=1.2}, textfont={color=caption-color}, position=top, skip=4mm, labelfont=bf, singlelinecheck=false, justification=raggedright]{caption}
+\setcapindent{0em}
+
+%
+% blockquote
+%
+\definecolor{blockquote-border}{RGB}{221,221,221}
+\definecolor{blockquote-text}{RGB}{119,119,119}
+\usepackage{mdframed}
+\newmdenv[rightline=false,bottomline=false,topline=false,linewidth=3pt,linecolor=blockquote-border,skipabove=\parskip]{customblockquote}
+\renewenvironment{quote}{\begin{customblockquote}\list{}{\rightmargin=0em\leftmargin=0em}%
+\item\relax\color{blockquote-text}\ignorespaces}{\unskip\unskip\endlist\end{customblockquote}}
+
+%
+% Source Sans Pro as the de­fault font fam­ily
+% Source Code Pro for monospace text
+%
+% 'default' option sets the default
+% font family to Source Sans Pro, not \sfdefault.
+%
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+    \usepackage[default]{sourcesanspro}
+  \usepackage{sourcecodepro}
+  \else % if not pdftex
+    \usepackage[default]{sourcesanspro}
+  \usepackage{sourcecodepro}
+
+  % XeLaTeX specific adjustments for straight quotes: https://tex.stackexchange.com/a/354887
+  % This issue is already fixed (see https://github.com/silkeh/latex-sourcecodepro/pull/5) but the
+  % fix is still unreleased.
+  % TODO: Remove this workaround when the new version of sourcecodepro is released on CTAN.
+  \ifxetex
+    \makeatletter
+    \defaultfontfeatures[\ttfamily]
+      { Numbers   = \sourcecodepro@figurestyle,
+        Scale     = \SourceCodePro@scale,
+        Extension = .otf }
+    \setmonofont
+      [ UprightFont    = *-\sourcecodepro@regstyle,
+        ItalicFont     = *-\sourcecodepro@regstyle It,
+        BoldFont       = *-\sourcecodepro@boldstyle,
+        BoldItalicFont = *-\sourcecodepro@boldstyle It ]
+      {SourceCodePro}
+    \makeatother
+  \fi
+  \fi
+
+%
+% heading color
+%
+\definecolor{heading-color}{RGB}{40,40,40}
+\addtokomafont{section}{\color{heading-color}}
+% When using the classes report, scrreprt, book,
+% scrbook or memoir, uncomment the following line.
+%\addtokomafont{chapter}{\color{heading-color}}
+
+%
+% variables for title, author and date
+%
+\usepackage{titling}
+\title{}
+\author{}
+\date{}
+
+%
+% tables
+%
+
+%
+% remove paragraph indention
+%
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+
+%
+%
+% Listings
+%
+%
+
+
+%
+% header and footer
+%
+\usepackage{fancyhdr}
+
+\fancypagestyle{eisvogel-header-footer}{
+  \fancyhead{}
+  \fancyfoot{}
+  \lhead[]{}
+  \chead[]{}
+  \rhead[]{}
+  \lfoot[\thepage]{}
+  \cfoot[]{}
+  \rfoot[]{\thepage}
+  \renewcommand{\headrulewidth}{0.4pt}
+  \renewcommand{\footrulewidth}{0.4pt}
+}
+\pagestyle{eisvogel-header-footer}
+
+%%
+%% end added
+%%
+
+\begin{document}
+
+%%
+%% begin titlepage
+%%
+
+%%
+%% end titlepage
+%%
+
+
+
+{
+\setcounter{tocdepth}{3}
+\tableofcontents
+}
+\hypertarget{table-of-contents}{%
+\subsubsection{Table of contents}\label{table-of-contents}}
+
+\begin{itemize}
+\tightlist
+\item
+  \protect\hyperlink{table-of-contents}{Table of contents}
+\item
+  \protect\hyperlink{javascript-basics}{Javascript Basics}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \protect\hyperlink{primitives-and-the-console}{Primitives and the
+    Console}
+  \item
+    \protect\hyperlink{numbers}{Numbers}
+  \item
+    \protect\hyperlink{variables}{Variables}
+  \item
+    \protect\hyperlink{variable-types}{Variable types}
+  \item
+    \protect\hyperlink{booleans}{Booleans}
+  \item
+    \protect\hyperlink{variable-naming-and-conventions}{Variable naming
+    and conventions}
+  \end{itemize}
+\item
+  \protect\hyperlink{javascript-strings-and-more}{Javascript Strings and
+  More}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \protect\hyperlink{strings}{Strings}
+  \item
+    \protect\hyperlink{indices-and-length}{Indices and length}
+  \item
+    \protect\hyperlink{string-methods}{String Methods}
+  \item
+    \protect\hyperlink{string-template-literals}{String Template
+    Literals}
+  \item
+    \protect\hyperlink{undefined-and-null}{Undefined and Null}
+  \item
+    \protect\hyperlink{random-number-and-math-object}{Random number and
+    Math Object}
+  \end{itemize}
+\item
+  \protect\hyperlink{decision-making}{Decision Making}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \protect\hyperlink{comparison-operators}{Comparison Operators}
+  \item
+    \protect\hyperlink{equality}{Equality}
+  \item
+    \protect\hyperlink{console-alert-prompt}{Console, Alert Prompt}
+  \item
+    \protect\hyperlink{if-statement}{If Statement}
+  \item
+    \protect\hyperlink{truthy-and-falsy}{Truthy and Falsy}
+  \item
+    \protect\hyperlink{logical-expressions}{Logical Expressions}
+  \item
+    \protect\hyperlink{switch-statement}{Switch Statement}
+  \end{itemize}
+\item
+  \protect\hyperlink{javascript-arrays}{Javascript Arrays}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \protect\hyperlink{introduction}{Introduction}
+  \item
+    \protect\hyperlink{modifying-arrays}{Modifying Arrays}
+  \item
+    \protect\hyperlink{array-methods}{Array Methods}
+  \item
+    \protect\hyperlink{reference-and-equality-types}{Reference and
+    Equality Types}
+  \item
+    \protect\hyperlink{arrays-and-constant}{Arrays and Constant}
+  \item
+    \protect\hyperlink{multidimensional-arrays}{Multidimensional Arrays}
+  \end{itemize}
+\item
+  \protect\hyperlink{javascript-objects}{Javascript Objects}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \protect\hyperlink{object-literals}{Object Literals}
+  \item
+    \protect\hyperlink{accessing-data-objects}{Accessing Data Objects}
+  \item
+    \protect\hyperlink{object-methods}{Object Methods}
+  \item
+    \protect\hyperlink{modifying-objects-imp}{Modifying Objects (Imp)}
+  \item
+    \protect\hyperlink{array-objects}{Array Objects}
+  \end{itemize}
+\item
+  \protect\hyperlink{loops}{Loops}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \protect\hyperlink{for-loop}{For Loop}
+  \item
+    \protect\hyperlink{infinite-loops}{Infinite Loops}
+  \item
+    \protect\hyperlink{looping-arrays}{Looping Arrays}
+  \item
+    \protect\hyperlink{nested-loops}{Nested Loops}
+  \item
+    \protect\hyperlink{while-loop}{While Loop}
+  \item
+    \protect\hyperlink{for-of-loop}{For of Loop}
+  \item
+    \protect\hyperlink{iterating-objects}{Iterating Objects}
+  \item
+    \protect\hyperlink{to-do-exercise-refer-code}{To-Do Exercise (Refer
+    Code)}
+  \end{itemize}
+\item
+  \protect\hyperlink{functions}{Functions}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \protect\hyperlink{introduction-1}{Introduction}
+  \item
+    \protect\hyperlink{arguments}{Arguments}
+  \item
+    \protect\hyperlink{return-statement}{Return Statement}
+  \end{itemize}
+\item
+  \protect\hyperlink{leveling-up-our-functions}{Leveling up our
+  Functions}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \protect\hyperlink{scope}{Scope}
+  \item
+    \protect\hyperlink{block-scope}{Block Scope}
+  \item
+    \protect\hyperlink{declarations}{Declarations}
+  \item
+    \protect\hyperlink{lexical-scope}{Lexical Scope}
+  \item
+    \protect\hyperlink{scopes-final}{Scopes Final}
+  \item
+    \protect\hyperlink{function-expressions}{Function Expressions}
+  \item
+    \protect\hyperlink{higher-order-functions-important}{Higher Order
+    Functions (Important)}
+  \item
+    \protect\hyperlink{returning-functions-important}{Returning
+    Functions (Important)}
+  \item
+    \protect\hyperlink{methods}{Methods}
+  \item
+    \protect\hyperlink{this}{This}
+  \item
+    \protect\hyperlink{try-catch}{Try-Catch}
+  \end{itemize}
+\item
+  \protect\hyperlink{arrays-and-callback-methods}{Arrays and Callback
+  Methods}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \protect\hyperlink{for-each}{For each}
+  \item
+    \protect\hyperlink{map-method}{Map Method}
+  \item
+    \protect\hyperlink{intro-to-arrow-functions}{Intro to Arrow
+    Functions}
+  \item
+    \protect\hyperlink{implicit-arrow-function}{Implicit Arrow Function}
+  \item
+    \protect\hyperlink{sorting-out-functions}{Sorting out Functions}
+  \item
+    \protect\hyperlink{settimeout-setinterval}{setTimeout, setInterval}
+  \item
+    \protect\hyperlink{filter-method}{Filter Method}
+  \item
+    \protect\hyperlink{some-and-every}{Some and Every}
+  \item
+    \protect\hyperlink{reduce}{Reduce}
+  \item
+    \protect\hyperlink{this-in-arrow-functions-refer-code}{This in Arrow
+    Functions (Refer Code)}
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{javascript-basics}{%
+\subsubsection{Javascript Basics}\label{javascript-basics}}
+
+\hypertarget{primitives-and-the-console}{%
+\paragraph{Primitives and the
+Console}\label{primitives-and-the-console}}
+
+\begin{itemize}
+\tightlist
+\item
+  Basic Building Blocks in Javascript are
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    Number
+  \item
+    String
+  \item
+    Boolean
+  \item
+    Null
+  \item
+    Undefined
+  \end{enumerate}
+\item
+  Other two technical types
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    Symbols
+  \item
+    Big Integers
+  \item
+    These two are way less commonly used.
+  \end{enumerate}
+\end{itemize}
+
+\hypertarget{numbers}{%
+\paragraph{Numbers}\label{numbers}}
+
+\begin{itemize}
+\tightlist
+\item
+  Comments
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    Using doubleslash
+  \item
+    //This is a comment
+  \end{enumerate}
+\item
+  Numbers
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    Javascript has one number type. Some other languages have more than
+    one.
+  \item
+    Positive Numbers
+  \item
+    Negative Numbers
+  \item
+    Whole Numbers(Integers)
+  \item
+    Decimal Numbers
+  \end{enumerate}
+\item
+  Math operations
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    Addition(+)
+  \item
+    Subtraction(-)
+  \item
+    Multiplication(*)
+  \item
+    Division(/)
+  \item
+    Modulo (Remainder operator - \%)
+  \item
+    Exponentiation (Power operator - **)
+  \end{enumerate}
+\item
+  Not a Number(NaN)
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    NaN is a numeric value that represents something that is not a
+    number.
+  \item
+    \textbf{NaN in Javascript is considered as a number.}
+  \item
+    The reason NaN in Javascript is considered as a number is because it
+    is technically a numeric data type whose value cannot be represented
+    using actual numbers.
+  \item
+    Any operation along with NaN is NaN
+  \item
+    Example : 0/0 - NaN = NaN, 1 + NaN - NaN = NaN
+  \item
+    There are five different types of operations that return NaN:
+
+    \begin{enumerate}
+    \def\labelenumii{\arabic{enumii}.}
+    \tightlist
+    \item
+      Number cannot be parsed (e.g.~parseInt(``blabla'') or
+      Number(undefined))
+    \item
+      Math operation where the result is not a real number
+      (e.g.~Math.sqrt(-1))
+    \item
+      Operand of an argument is NaN (e.g.~7 ** NaN)
+    \item
+      Indeterminate form (e.g.~0 * Infinity, or undefined + undefined)
+    \item
+      Any operation that involves a string and is not an addition
+      operation (e.g.~``foo'' / 3)
+    \end{enumerate}
+  \end{enumerate}
+\item
+  Operators in Javascript.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    The full list of the operators in Javascript can be found here.
+    https://www.w3schools.com/js/js\_operators.asp
+  \item
+    In short.
+
+    \begin{enumerate}
+    \def\labelenumi{\arabic{enumi}.}
+    \tightlist
+    \item
+      Arithmetic Operators (+,-,*,**,/,\%,++,--)
+    \item
+      Assignment Operators (=,+=,-=,*=,/=,*~*=,\%=)
+    \item
+      Comparison Operators (==, ===, !=, !==, \textgreater, \textless,
+      \textgreater=, \textless=, ?)
+
+      \begin{itemize}
+      \tightlist
+      \item
+        Note that `===' and `!==' don't only check the value but they
+        also look for the type of the variable.
+      \end{itemize}
+    \item
+      Logical Operators (\&\&, \textbar\textbar, !)
+    \item
+      Type Operators (typeof, instanceof)
+    \item
+      Bitwise Operators (\&, \textbar, \textasciitilde, \^{},
+      \textless\textless, \textgreater\textgreater,
+      \textgreater\textgreater\textgreater)
+    \end{enumerate}
+  \end{itemize}
+\item
+  Escape Sequences
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    (\textquotesingle) : Single quote
+  \item
+    (") : Double quote
+  \item
+    (\textbackslash) : Backslash
+  \item
+    (\n) : newline
+  \item
+    (\r) : carriage return
+  \item
+    (\t) : tab
+  \item
+    (\b) : word boundary
+  \item
+    (\f) : form feed
+  \end{enumerate}
+\end{itemize}
+
+\hypertarget{variables}{%
+\paragraph{Variables}\label{variables}}
+
+\begin{itemize}
+\tightlist
+\item
+  Variables are like labels for values
+\item
+  We can store a value and give it a name so that we can:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    *Refer back to it later
+  \item
+    *Use that value to do\ldots{} stuff
+  \item
+    *Or change it later one
+  \end{itemize}
+\item
+  Basic Syntax
+
+  \begin{itemize}
+  \tightlist
+  \item
+    let someName = value;
+  \end{itemize}
+\item
+  Example
+
+  \begin{itemize}
+  \tightlist
+  \item
+    let year = 1985;
+  \item
+    console.log(year)
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{variable-types}{%
+\paragraph{Variable types}\label{variable-types}}
+
+\begin{itemize}
+\tightlist
+\item
+  let
+\item
+  const
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    const works just like let, except you cannot change the value.
+  \item
+    const variable does not allow to change the value
+  \item
+    We can use it to change the things we know won't change.
+  \item
+    Example : const pi = 3.14159;
+  \end{enumerate}
+\item
+  var
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    Before let and const, var was the only way of declaring variables.
+    These days, there isn't really a reason to use it.
+  \end{enumerate}
+\end{itemize}
+
+\hypertarget{booleans}{%
+\paragraph{Booleans}\label{booleans}}
+
+\begin{itemize}
+\tightlist
+\item
+  Booleans are used to store True or False values.
+\item
+  Unlike Python , they are lowercase in Javascript.
+\item
+  You can change a number variable to boolean or any other type in
+  javascript.
+\end{itemize}
+
+\hypertarget{variable-naming-and-conventions}{%
+\paragraph{Variable naming and
+conventions}\label{variable-naming-and-conventions}}
+
+\begin{itemize}
+\tightlist
+\item
+  In Javascript, identifiers are case sensitive, it can contain Unicode
+  letters,\$,\_,digits but may not start with a digit.
+\item
+  Give variables camelCase names.
+\item
+  Give proper variable names (which can be understood.)
+\end{itemize}
+
+\hypertarget{javascript-strings-and-more}{%
+\subsubsection{Javascript Strings and
+More}\label{javascript-strings-and-more}}
+
+\hypertarget{strings}{%
+\paragraph{Strings}\label{strings}}
+
+\begin{itemize}
+\tightlist
+\item
+  Strings of Characters
+\item
+  Strings are another primitive type in Javascript.
+\item
+  \textbf{Strings in Javascript are immutable}
+\item
+  They represent text, and must be wrapped in quotes(single, double or
+  triple).
+\item
+  Strings can also be empty - ``\,''
+\item
+  Strings can be added to each other i.e concatenated
+\item
+  Syntax -
+
+  \begin{itemize}
+  \tightlist
+  \item
+    ``String 1'' + ``String 2''
+  \item
+    result+=``String1'' (When you want to modify the string result by
+    concatenating it with other string)
+  \end{itemize}
+\item
+  Similarly, we can also concatenate a string and a number.
+\item
+  The number will be converted to string when concatenating it with a
+  string.
+\item
+  Example - 1 + ``hi'' = 1hi(which is a string)
+\item
+  Also, we can overwrite a string to change its value.
+\end{itemize}
+
+\hypertarget{indices-and-length}{%
+\paragraph{Indices and length}\label{indices-and-length}}
+
+\begin{itemize}
+\tightlist
+\item
+  Index
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Strings are indexed i.e each character has a corresponding index ( a
+  positional number).
+\item
+  Index starts from 0.
+\item
+  We can access individual characters based on their index.
+\item
+  \textbf{But we cannot change the individual characters with the help
+  of their index as strings are immutable in Javascript.}
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Length
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Syntax - var.length
+\item
+  \textbf{length starts counting from 1 unlike index which starts
+  counting from 0.}
+\item
+  \textbf{It is not a method but rather a property. So we do not add
+  parentheses () unlike other methods.}
+\end{enumerate}
+
+\hypertarget{string-methods}{%
+\paragraph{String Methods}\label{string-methods}}
+
+\begin{itemize}
+\tightlist
+\item
+  String Methods -
+  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/String
+\item
+  Methods are built-in actions we can perform with individual strings.
+\item
+  They help us do things like
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Searching within a string
+  \item
+    Replacing part of a string
+  \item
+    Changing the casing of a string
+  \end{itemize}
+\item
+  Syntax \texttt{thing.method()}
+\item
+  Methods
+
+  \begin{itemize}
+  \tightlist
+  \item
+    We will identify methods based on destructive or non destructive.
+    Destructive methods change the value of the original string without
+    overwriting when the method is applied on it whereas non destructive
+    method preserves the original string.
+  \item
+    Types of Methods
+
+    \begin{itemize}
+    \tightlist
+    \item
+      toUpperCase() - Changes all the characters of the string to Upper
+      case (Non destructive method)
+    \item
+      toLowerCase() - Changes all the characters of the string to Lower
+      casw (Non destructive method)
+    \item
+      trim() - Removes any whitespace at the beginning of the string or
+      at the end (Non destructive method)
+    \end{itemize}
+  \end{itemize}
+\item
+  We can also chain methods together.
+\end{itemize}
+
+\hypertarget{string-template-literals}{%
+\paragraph{String Template Literals}\label{string-template-literals}}
+
+\begin{itemize}
+\tightlist
+\item
+  Template literals are strings that allow embedded expressions, which
+  will be evaluated and then turned into a resulting string.
+\item
+  Expressions can be embedded using \$\{expression\} where we can use
+  variable or an expression.
+\item
+  `String is enclosed with the use of backticks.`
+\end{itemize}
+
+\hypertarget{undefined-and-null}{%
+\paragraph{Undefined and Null}\label{undefined-and-null}}
+
+\begin{itemize}
+\tightlist
+\item
+  Null
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    Intentional absence of any value is given as null.
+  \item
+    Must be assigned.
+  \end{enumerate}
+\item
+  Undefined
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    Variables that do not have an assigned value are undefined.
+  \end{enumerate}
+\end{itemize}
+
+\hypertarget{random-number-and-math-object}{%
+\paragraph{Random number and Math
+Object}\label{random-number-and-math-object}}
+
+\begin{itemize}
+\tightlist
+\item
+  Math Object
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    Contains properties and methods for mathematical constants and
+    functions.
+  \end{enumerate}
+\end{itemize}
+
+\hypertarget{decision-making}{%
+\subsubsection{Decision Making}\label{decision-making}}
+
+\hypertarget{comparison-operators}{%
+\paragraph{Comparison Operators}\label{comparison-operators}}
+
+\begin{itemize}
+\tightlist
+\item
+  Comparisons
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    `\textgreater{}' \ldots.. greater than
+  \item
+    `\textless{}' \ldots.. less than
+  \item
+    `\textgreater{}' \ldots.. greater than or equal to
+  \item
+    `\textless=' \ldots.. less than or equal to
+  \item
+    `==' \ldots.. equality
+  \item
+    `!=' \ldots.. not equal
+  \item
+    `===' \ldots.. strict equality
+  \item
+    `!==' \ldots.. strict inequality
+  \end{enumerate}
+\item
+  Comparisons are usually used for numbers however we can also use it
+  for strings where we compare the unicode values of the strings.
+\item
+  All of the comparison operators return a boolean true or false value.
+\item
+  Example
+  \texttt{JS\ \ \ \ \ function\ isEqual(a,b)\ \{\ \ \ \ \ \ \ \ \ if\ (a\ ===\ b)\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ return\ true;\ \ \ \ \ \ \ \ \ \}else\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ return\ false;\ \ \ \ \ \ \ \ \ \}\ \ \ \ \ \}}
+\item
+  The better way to write this is:
+  \texttt{JS\ \ \ \ \ function\ isEqual(a,b)\ \{\ \ \ \ \ \ \ \ \ return\ a\ ===\ b;\ \ \ \ \ \}}
+\item
+  This helps only in case of booleans as the comparison operators return
+  true or false
+\end{itemize}
+
+\hypertarget{equality}{%
+\paragraph{Equality}\label{equality}}
+
+\begin{verbatim}
+```JS
+a = 14
+b = "14"
+
+console.log(a == b) //true
+console.log(7 == "7") //true
+console.log(0 == "") //true
+console.log(0 == false) //true
+console.log(null == undefined) //true
+console.log("b" == "c") //false
+console.log(true == false) //false
+
+//In Javascript 
+//Number("") == 0
+//Number("923") = 923
+//Number("923 123") = NaN
+// Number("jskfdjd") = NaN
+```
+\end{verbatim}
+
+\hypertarget{console-alert-prompt}{%
+\paragraph{Console, Alert Prompt}\label{console-alert-prompt}}
+
+\begin{itemize}
+\tightlist
+\item
+  console.log()
+
+  \begin{itemize}
+  \tightlist
+  \item
+    prints arguments to the console.
+  \end{itemize}
+\item
+  alert()
+
+  \begin{itemize}
+  \tightlist
+  \item
+    alerts a message in the browser or DOM
+  \end{itemize}
+\item
+  prompt()
+
+  \begin{itemize}
+  \tightlist
+  \item
+    prompts the user asking for value in the browser window.
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{if-statement}{%
+\paragraph{If Statement}\label{if-statement}}
+
+\begin{itemize}
+\tightlist
+\item
+  Conditional statements is making decisions with our code.
+\item
+  if statement only runs code inside the curly braces if the condition
+  is true.
+\item
+  If the condition is false, nothing happens or either true elif or else
+  condition is executed.
+\item
+  Syntax:
+  \texttt{JS\ \ \ \ \ if(condition)\{\ \ \ \ \ \ \ \ \ code\ \ \ \ \ \}\ \ \ \ \ else\ if(condition)\{\ \ \ \ \ \ \ \ \ code\ \ \ \ \ \}\ \ \ \ \ else\{\ \ \ \ \ \ \ \ \ code\ \ \ \ \ \}}
+\item
+  Check code too for better understanding.
+\end{itemize}
+
+\hypertarget{truthy-and-falsy}{%
+\paragraph{Truthy and Falsy}\label{truthy-and-falsy}}
+
+\begin{itemize}
+\tightlist
+\item
+  All JS Values have an inherent truthyness or falsyness around them.
+\item
+  \textbf{Falsy Values}
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    false
+  \item
+    0 3.''\,``(empty string) 4.null 5.undefined 6.NaN
+  \end{enumerate}
+\item
+  Everything else is truthy
+\end{itemize}
+
+\hypertarget{logical-expressions}{%
+\paragraph{Logical Expressions}\label{logical-expressions}}
+
+\begin{itemize}
+\tightlist
+\item
+  Logical operators are the ones that allow us to combine different
+  expressions.
+\item
+  So we can combine more than one piece of logic together to form one
+  larger piece of logic.
+\item
+  Logical operators
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    AND (\&\&) Both sides must be true for entire thing to be true.
+  \item
+    OR (\textbar\textbar) If one side is true, the entire thing is true.
+  \item
+    NOT (!) !expression returns true if expression is false and false if
+    true.
+  \end{enumerate}
+\item
+  \textbf{AND has precedence over OR. You can use parentheses to filter
+  the }precendence**.
+\end{itemize}
+
+\hypertarget{switch-statement}{%
+\paragraph{Switch Statement}\label{switch-statement}}
+
+\begin{itemize}
+\tightlist
+\item
+  The switch statement is another control-flow statement that can
+  replace multiple if statements.
+\item
+  Syntax
+  \texttt{JS\ \ \ \ \ switch(variable\ or\ number)\{\ \ \ \ \ \ \ \ \ case\ 1:\ \ \ \ \ \ \ \ \ \ \ \ \ //code;\ \ \ \ \ \ \ \ \ \ \ \ \ break;\ \ \ \ \ \ \ \ \ case\ 2:\ \ \ \ \ \ \ \ \ \ \ \ \ //code;\ \ \ \ \ \ \ \ \ \ \ \ \ break;\ \ \ \ \ \ \ \ \ case\ 3:\ \ \ \ \ \ \ \ \ \ \ \ \ //code;\ \ \ \ \ \ \ \ \ \ \ \ \ break;\ \ \ \ \ \ \ \ \ .\ \ \ \ \ \ \ \ \ .\ \ \ \ \ \ \ \ \ .\ \ \ \ \ \ \ \ \ case\ n:\ \ \ \ \ \ \ \ \ \ \ \ \ //code;\ \ \ \ \ \ \ \ \ \ \ \ \ break;\ \ \ \ \ \ \ \ \ default:\ \ \ \ \ \ \ \ \ \ \ \ \ //code;\ \ \ \ \ \ \ \ \ \}}
+\item
+  Working
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    So switch detects the number or variable passed into it.
+  \item
+    It keeps on executing code ahead of it until the end of the loop or
+    break .
+  \item
+    So if there are 7 cases without break and the parameter if 5, it
+    will execute 5,6 and 7th cases.
+  \item
+    That's why break is necessary.
+  \end{enumerate}
+\item
+  Example
+  \texttt{JS\ \ \ \ \ function\ sequentialSizes(val)\ \{\ \ \ \ \ \ \ \ \ var\ answer\ =\ "";\ \ \ \ \ \ \ \ \ switch(val)\{\ \ \ \ \ \ \ \ \ \ \ \ \ case\ 1:\ \ \ \ \ \ \ \ \ \ \ \ \ case\ 2:\ \ \ \ \ \ \ \ \ \ \ \ \ case\ 3:\ \ \ \ \ \ \ \ \ \ \ \ \ answer\ =\ "Low";\ \ \ \ \ \ \ \ \ \ \ \ \ break;\ \ \ \ \ \ \ \ \ \ \ \ \ case\ 4:\ \ \ \ \ \ \ \ \ \ \ \ \ case\ 5:\ \ \ \ \ \ \ \ \ \ \ \ \ case\ 6:\ \ \ \ \ \ \ \ \ \ \ \ \ answer\ =\ "Mid";\ \ \ \ \ \ \ \ \ \ \ \ \ break;\ \ \ \ \ \ \ \ \ \ \ \ \ case\ 7:\ \ \ \ \ \ \ \ \ \ \ \ \ case\ 8:\ \ \ \ \ \ \ \ \ \ \ \ \ case\ 9:\ \ \ \ \ \ \ \ \ \ \ \ \ answer\ =\ "High";\ \ \ \ \ \ \ \ \ \ \ \ \ break;\ \ \ \ \ \ \ \ \ \}\ \ \ \ \ \ \ \ \ return\ answer;\ \ \ \ \ \}\ \ \ \ \ sequentialSizes(1);}
+\item
+  In the above example, answer will be Low for cases 1,2 and 3, Mid for
+  cases 4,5 and 6, High for cases 7,8 and 9.
+\end{itemize}
+
+\hypertarget{javascript-arrays}{%
+\subsubsection{Javascript Arrays}\label{javascript-arrays}}
+
+\hypertarget{introduction}{%
+\paragraph{Introduction}\label{introduction}}
+
+\begin{itemize}
+\tightlist
+\item
+  Ordered collection of values
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    List of comments on IG Post.
+  \item
+    Collection of levels in a game.
+  \item
+    Songs in a playlist.
+  \end{enumerate}
+\item
+  Creating Arrays.
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    To make an empty array \texttt{let\ students\ =\ {[}{]};}
+  \item
+    An array of strings
+    \texttt{let\ colors\ =\ {[}\textquotesingle{}red\textquotesingle{},\textquotesingle{}orange\textquotesingle{},\textquotesingle{}yellow\textquotesingle{}{]};}
+  \item
+    An array of numbers
+    \texttt{let\ lottoNums\ =\ {[}19,22,56,12,51{]};}
+  \item
+    A mixed array
+    \texttt{let\ stuff\ =\ {[}true,\ 68,\ \textquotesingle{}cat\textquotesingle{},\ null,\ undefined{]}}
+  \item
+    \textbf{Javascript can also create a mixed array unlike C++.}
+  \end{enumerate}
+\item
+  Array Random access.
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    Just like strings, arrays are also indexed. Each element has a
+    corresponding index where the counting starts at 0.
+  \item
+    Example \texttt{colors{[}0{]}\ //red} \texttt{colors.length\ //3}
+  \item
+    If index is not present in the array, you get undefined.
+  \item
+    We can also chain indexes \texttt{colors{[}0{]}{[}0{]}\ //r}
+  \end{enumerate}
+\end{itemize}
+
+\hypertarget{modifying-arrays}{%
+\paragraph{Modifying Arrays}\label{modifying-arrays}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Arrays can be modified unlike strings which cannot be modified
+  but needs to be overwritten.}
+\item
+  Example
+  \texttt{JS\ \ \ \ \ let\ colors\ =\ {[}\textquotesingle{}rad\textquotesingle{},\textquotesingle{}orange\textquotesingle{},\textquotesingle{}blue\textquotesingle{},\textquotesingle{}white\textquotesingle{},\textquotesingle{}black\textquotesingle{}{]};\ \ \ \ \ colors{[}0{]}=\ "red";}
+\end{itemize}
+
+\hypertarget{array-methods}{%
+\paragraph{Array Methods}\label{array-methods}}
+
+\begin{itemize}
+\tightlist
+\item
+  Resources
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    MDN Arrays -
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/Array
+  \item
+    Slice, Splice, Split -
+    https://www.freecodecamp.org/news/lets-clear-up-the-confusion-around-the-slice-splice-split-methods-in-javascript-8ba3266c29ae/
+  \end{enumerate}
+\item
+  \textbf{Array Methods}
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    Push - add to end (destructive method)
+  \item
+    Pop - remove from end (destructive method)
+  \item
+    Shift - remove from start (destructive method)
+  \item
+    Unshift - add to start (destructive method)
+  \item
+    concat - merge arrays(non-destructive for original arrays)
+  \item
+    includes - look for a value (false if not present)
+  \item
+    indexOf - returns the index of the array (-1 if not present and only
+    returns first occurrence)
+  \item
+    join - creates a string from an array
+  \item
+    reverse - reverses an array (destructive method)
+  \item
+    slice - copies a portion of an array
+
+    \begin{enumerate}
+    \def\labelenumii{\arabic{enumii}.}
+    \tightlist
+    \item
+      takes two optional parameters
+    \item
+      same as strings, index starts from 0 and goes till n-1.
+    \item
+      For negative index it will start from end of the index and assume
+      that the index will start from 1 from the end.
+    \end{enumerate}
+  \item
+    splice - removes / replaces elements
+
+    \begin{enumerate}
+    \def\labelenumii{\arabic{enumii}.}
+    \tightlist
+    \item
+      Syntax array.(start\_index, delete\_count, items)
+    \end{enumerate}
+  \item
+    sort - sorts an array
+
+    \begin{enumerate}
+    \def\labelenumii{\arabic{enumii}.}
+    \tightlist
+    \item
+      Compares everything to string and then compares their UTF values
+    \end{enumerate}
+  \end{enumerate}
+\end{itemize}
+
+\hypertarget{reference-and-equality-types}{%
+\paragraph{Reference and Equality
+Types}\label{reference-and-equality-types}}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{{[}1{]}\ ===\ {[}1{]}\ or\ {[}1{]}=={[}1{]}\ or\ {[}\textquotesingle{}\textquotesingle{}{]}=={[}\textquotesingle{}\textquotesingle{}{]}}
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    This will give false as in arrays we are not comparing the content.
+  \item
+    Javascript doesn't care what's inside, atleast with arrays.
+  \item
+    \textbf{What it compares instead are the references in memory.}
+  \item
+    Let luckyNum = 87; Certain amount of space is allocated in memory
+    for this number.
+  \item
+    For arrays that's not the case, you can have many many elements in
+    an array where it stores lots of space.
+  \item
+    luckyNums = {[}1,2,3{]}
+  \item
+    Instead of associating luckyNums with all elements in luckyNums
+    array, what Javascript does is it stores a reference which
+    corresponds to array.
+  \item
+    So if you make another {[}1,2,3{]}, it is actually a different
+    array. That is a new array in memory is created.
+  \item
+    \textbf{Refer the reference code as well.}
+  \item
+    Check the below code
+  \end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{let}\NormalTok{ nums }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\OperatorTok{,}\DecValTok{2}\OperatorTok{,}\DecValTok{3}\NormalTok{]}
+\NormalTok{numsCopy }\OperatorTok{=}\NormalTok{ nums}
+\BuiltInTok{console}\OperatorTok{.}\FunctionTok{log}\NormalTok{(nums)}
+\BuiltInTok{console}\OperatorTok{.}\FunctionTok{log}\NormalTok{(numsCopy)}
+\NormalTok{nums}\OperatorTok{.}\FunctionTok{push}\NormalTok{(}\DecValTok{4}\NormalTok{)}
+\BuiltInTok{console}\OperatorTok{.}\FunctionTok{log}\NormalTok{(nums)}
+\BuiltInTok{console}\OperatorTok{.}\FunctionTok{log}\NormalTok{(numsCopy)}
+\end{Highlighting}
+\end{Shaded}
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \setcounter{enumi}{10}
+  \tightlist
+  \item
+    In the above code, numsCopy doesn't create a different copy of nums,
+    however, it references to the same array as nums. So any changes
+    made to numsCopy will reflect to nums and vice-versa.
+  \end{enumerate}
+\end{itemize}
+
+\hypertarget{arrays-and-constant}{%
+\paragraph{Arrays and Constant}\label{arrays-and-constant}}
+
+\begin{itemize}
+\tightlist
+\item
+  For strings we cannot change the value of a const
+\item
+  For arrays, the shell remains the same but the content can change
+\item
+  \textbf{Updating the content doesn't change the address of the array,
+  the reference.}
+\item
+  \textbf{Example - As long as egg carton remains change you can put
+  different eggs in it and change.}
+\item
+  As soon as you try to change it to new reference, you get an error.
+\item
+  \textbf{In short, the difference between strings and arrays is that
+  the strings are immutable and the arrays are mutable. However, in case
+  of const, we cannot re-assign values to both of them.}
+\end{itemize}
+
+\hypertarget{multidimensional-arrays}{%
+\paragraph{Multidimensional Arrays}\label{multidimensional-arrays}}
+
+\begin{itemize}
+\tightlist
+\item
+  Also known as Nested Arrays.
+\item
+  We can store arrays inside other arrays.
+\item
+  Refer code.
+\end{itemize}
+
+\hypertarget{javascript-objects}{%
+\subsubsection{Javascript Objects}\label{javascript-objects}}
+
+\hypertarget{object-literals}{%
+\paragraph{Object Literals}\label{object-literals}}
+
+\begin{itemize}
+\tightlist
+\item
+  Objects are collections of properties.
+\item
+  Properties are a key-value pair.
+\item
+  Rather than accessing data using an index, we use custom keys.
+\item
+  It consists of property key + value
+\item
+  It is similar to the dictionaries in python.
+\item
+  Example:
+  \texttt{JS\ \ \ \ \ const\ fitBitData\ =\ \{\ \ \ \ \ \ \ \ \ totalSteps\ :\ 308727,\ \ \ \ \ \ \ \ \ totalMiles\ :\ 211.7\ \ \ \ \ \ \ \ \ avgCalorieBurn\ :\ 5755,\ \ \ \ \ \ \ \ \ workoutsThisWeek\ :\ \textquotesingle{}5\ of\ 7\textquotesingle{}\ \ \ \ \ \ \ \ \ avgGoodSleep\ :\ \textquotesingle{}2:13\textquotesingle{}\ \ \ \ \ \}}
+\item
+  All valid keys are converted to strings in objects.(Except for symbols
+  - which is uncommon)
+\end{itemize}
+
+\hypertarget{accessing-data-objects}{%
+\paragraph{Accessing Data Objects}\label{accessing-data-objects}}
+
+\begin{itemize}
+\tightlist
+\item
+  Let us start with an example
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{person }\OperatorTok{=}\NormalTok{ \{}
+    \DataTypeTok{firstName} \OperatorTok{:} \StringTok{"Yash"}\OperatorTok{,}
+    \DataTypeTok{lastName} \OperatorTok{:} \StringTok{"Thakkar"}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  In order to access firstName
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{person[}\StringTok{"firstName"}\NormalTok{]}
+\NormalTok{person}\OperatorTok{.}\AttributeTok{firstName}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  {[}{]}
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    For a key which is a string, it expects it to be a variable name in
+    {[}{]}, therefore you need to wrap it up with double quotes.
+  \item
+    However, you can let numeric, boolean keys in double quotes as well
+    as without it
+  \end{enumerate}
+\item
+  dot access
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    Whereas in dot method, you shouldn't wrap it in double quotes.
+  \item
+    Dot method doesn't work for numbers.
+  \item
+    It doesn't support variables as well
+  \end{enumerate}
+\end{itemize}
+
+\hypertarget{object-methods}{%
+\paragraph{Object Methods}\label{object-methods}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{const}\NormalTok{ counterStrikeRating }\OperatorTok{=}\NormalTok{ \{}
+    \DataTypeTok{Morris} \OperatorTok{:} \DecValTok{85}\OperatorTok{,}
+    \DataTypeTok{Cooper} \OperatorTok{:} \DecValTok{80}\OperatorTok{,}
+    \DataTypeTok{Ben} \OperatorTok{:} \DecValTok{88}\OperatorTok{,}
+    \DataTypeTok{Sam} \OperatorTok{:} \DecValTok{95}\OperatorTok{,}
+    \DataTypeTok{Maverick} \OperatorTok{:} \DecValTok{99}\OperatorTok{,}
+    \DataTypeTok{Yash} \OperatorTok{:} \DecValTok{100}\OperatorTok{,}
+    \DataTypeTok{Ace} \OperatorTok{:} \DecValTok{96}\OperatorTok{,}
+    \DataTypeTok{Tex} \OperatorTok{:} \DecValTok{96}\OperatorTok{,}
+    \DataTypeTok{Steel} \OperatorTok{:} \DecValTok{97}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Object.keys(counterStrikeRating)
+\item
+  Object.values(counterStrikeRating)
+\item
+  Object.entries(counterStrikeRating)
+\item
+  counterStrikeRating.hasOwnProperty(propertyname)
+\item
+  Example \texttt{counterStrikeRating.hasOwnProperty("Morris");}
+\end{enumerate}
+
+\hypertarget{modifying-objects-imp}{%
+\paragraph{Modifying Objects (Imp)}\label{modifying-objects-imp}}
+
+\begin{itemize}
+\tightlist
+\item
+  Check out the \texttt{03\_imp\_modifying\_objects.js} code.
+\end{itemize}
+
+\hypertarget{array-objects}{%
+\paragraph{Array Objects}\label{array-objects}}
+
+\begin{itemize}
+\item
+  Example
+  \texttt{JS\ \ \ \ \ const\ student\ =\ \{\ \ \ \ \ \ \ \ \ firstName\ :\ \textquotesingle{}Yash\textquotesingle{},\ \ \ \ \ \ \ \ \ lastName\ :\ \textquotesingle{}Thakkar\textquotesingle{},\ \ \ \ \ \ \ \ \ strengths\ :\ {[}\textquotesingle{}Music\textquotesingle{},\ \textquotesingle{}Programming\textquotesingle{}{]},\ \ \ \ \ \ \ \ \ exams\ :\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ midterms\ :\ 95,\ \ \ \ \ \ \ \ \ \ \ \ \ final\ :\ 100\ \ \ \ \ \ \ \ \ \}\ \ \ \ \ \}}
+\item
+  Example
+  \texttt{JS\ \ \ \ \ const\ shoppingCart\ =\ {[}\ \ \ \ \ \ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ product\ :\ "POCO\ C3",\ \ \ \ \ \ \ \ \ \ \ \ \ price\ :\ 7000,\ \ \ \ \ \ \ \ \ \ \ \ \ quatity:\ 10\ \ \ \ \ \ \ \ \ \},\ \ \ \ \ \ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ product\ :\ "POCO\ M2",\ \ \ \ \ \ \ \ \ \ \ \ \ price\ :\ 9000,\ \ \ \ \ \ \ \ \ \ \ \ \ quatity:\ 5\ \ \ \ \ \ \ \ \ \},\ \ \ \ \ \ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ product\ :\ "Asus\ Max\ Pro\ M3",\ \ \ \ \ \ \ \ \ \ \ \ \ price\ :\ 9000,\ \ \ \ \ \ \ \ \ \ \ \ \ quantity:\ 1\ \ \ \ \ \ \ \ \ \}\ \ \ \ \ {]}}
+\end{itemize}
+
+\hypertarget{loops}{%
+\subsubsection{Loops}\label{loops}}
+
+\hypertarget{for-loop}{%
+\paragraph{For Loop}\label{for-loop}}
+
+\begin{itemize}
+\tightlist
+\item
+  Loops allow us to repeat code
+\item
+  Sum all numbers in an array.
+\item
+  There are multiple types:
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    for loop
+  \item
+    while loop
+  \item
+    for\ldots of loop
+  \item
+    for\ldots in loop
+  \end{enumerate}
+\item
+  For Loop Syntax
+  \texttt{JS\ \ \ \ \ for(\ \ \ \ \ \ \ \ \ {[}initialExpression{]};\ \ \ \ \ \ \ \ \ {[}condition{]};\ \ \ \ \ \ \ \ \ {[}incrementExpression{]}\ \ \ \ \ )}
+\item
+  Example
+  \texttt{JS\ \ \ \ \ for\ (let\ i\ =\ 1;\ i\textless{}=10;\ i++)\{\ \ \ \ \ \ \ \ \ console.log(i)\ \ \ \ \ \}}
+\item
+  The loop keeps on executing until the condition is false
+\item
+  Hence
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    The first part is the initialization part
+  \item
+    The second part is the condition part, if it is true, the loop will
+    get executed, else it will not
+  \item
+    The third part is the incrementing part, so that the condition can
+    be false and the loop comes to an end.
+  \end{enumerate}
+\end{itemize}
+
+\hypertarget{infinite-loops}{%
+\paragraph{Infinite Loops}\label{infinite-loops}}
+
+\begin{itemize}
+\tightlist
+\item
+  Infinite loops should be avoidable.
+\item
+  Loops which keep on going as there is no false condition are known as
+  infinite loops and they keep on running.
+\item
+  They take up computer memory.
+\end{itemize}
+
+\hypertarget{looping-arrays}{%
+\paragraph{Looping Arrays}\label{looping-arrays}}
+
+\begin{itemize}
+\tightlist
+\item
+  To loop over an array, start at index 0 and continue looping to until
+  last index (length-1)
+\item
+  Example
+  \texttt{JS\ \ \ \ \ const\ animals\ =\ {[}\textquotesingle{}lions\textquotesingle{},\textquotesingle{}tigers\textquotesingle{},\textquotesingle{}bears\textquotesingle{}{]};\ \ \ \ \ for(let\ i\ =\ 0;i\textless{}animals.length;i++)\{\ \ \ \ \ \ \ \ \ console.log(i,animals{[}i{]});\ \ \ \ \ \}}
+\end{itemize}
+
+\hypertarget{nested-loops}{%
+\paragraph{Nested Loops}\label{nested-loops}}
+
+\begin{itemize}
+\tightlist
+\item
+  Example
+  \texttt{JS\ \ \ \ \ let\ str\ =\ \textquotesingle{}LOL\textquotesingle{};\ \ \ \ \ for\ (let\ i\ =\ 0\ ;i\textless{}=4;\ i++)\{\ \ \ \ \ \ \ \ \ console.log("Outer",i)\ \ \ \ \ \ \ \ \ for\ (let\ j\ =\ 0;\ j\textless{}str.length;j++)\{\ \ \ \ \ \ \ \ \ \ \ \ \ console.log("Inner:",str{[}j{]})\ \ \ \ \ \ \ \ \ \}\ \ \ \ \ \}}
+\item
+  For every single iteration of the outer loop, let's say it runs five
+  times, the inner loop is going to have it's own full cycle
+\item
+  while i is 1, we have an entire nested loop which runs for j starting
+  at 0 upto 2. So we end up with 3 iterations of j all when we are at
+  1st iteration of i, then we move up where i is 2 and the whole process
+  repeats
+\item
+  This is how it works
+  \texttt{0\ \ \ \ \ \ \ \ \ 0\ \ \ \ \ \ \ \ \ 1\ \ \ \ \ \ \ \ \ 2\ \ \ \ \ 1\ \ \ \ \ \ \ \ \ 0\ \ \ \ \ \ \ \ \ 1\ \ \ \ \ \ \ \ \ 2\ \ \ \ \ 2\ \ \ \ \ \ \ \ \ 0\ \ \ \ \ \ \ \ \ 1\ \ \ \ \ \ \ \ \ 2\ \ \ \ \ 3\ \ \ \ \ \ \ \ \ 0\ \ \ \ \ \ \ \ \ 1\ \ \ \ \ \ \ \ \ 2\ \ \ \ \ 4\ \ \ \ \ \ \ \ \ 0\ \ \ \ \ \ \ \ \ 1\ \ \ \ \ \ \ \ \ 2}
+\end{itemize}
+
+\hypertarget{while-loop}{%
+\paragraph{While Loop}\label{while-loop}}
+
+\begin{itemize}
+\tightlist
+\item
+  while loops continue running as long as the test condition is true.
+\item
+  Example let num = 0 while (num \textless{} 10)\{ console.log(num);
+  num++; \}
+\item
+  break keyword
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    break keyword breaks out of the while loop.
+  \item
+    It is especially useful in case when we want to loop a statement
+    again and again except for a certain condition.
+  \item
+    We can use break keyword for that particular condition.
+  \end{enumerate}
+\end{itemize}
+
+\hypertarget{for-of-loop}{%
+\paragraph{For of Loop}\label{for-of-loop}}
+
+\begin{itemize}
+\tightlist
+\item
+  Syntax
+  \texttt{JS\ \ \ \ \ for\ (variable\ of\ iterable)\{\ \ \ \ \ \ \ \ \ statements;\ \ \ \ \ \}}
+\item
+  for of loop iterates through the whole string and array
+\end{itemize}
+
+\hypertarget{iterating-objects}{%
+\paragraph{Iterating Objects}\label{iterating-objects}}
+
+\begin{itemize}
+\tightlist
+\item
+  for in loop is used to iterate over the objects.
+\item
+  Its Syntax is
+  \texttt{JS\ \ \ \ \ for\ (variable\ in\ iterable)\{\ \ \ \ \ \ \ \ \ statements;\ \ \ \ \ \}}
+\item
+  using for in you can get the key of the key-value pair.
+\item
+  in order to get the value, you can write
+  \texttt{console.log(iterable{[}variable{]})}
+\item
+  Other special methods for objects
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    Object.keys(Object\_variable) //Returns array of keys
+  \item
+    Object.values(Object\_variable) //Returns array of values
+  \item
+    Object.entries(Object\_variable) //To get nested array of key-value
+    pairs
+  \end{enumerate}
+\end{itemize}
+
+\hypertarget{to-do-exercise-refer-code}{%
+\paragraph{To-Do Exercise (Refer
+Code)}\label{to-do-exercise-refer-code}}
+
+\begin{itemize}
+\tightlist
+\item
+  This is a basic to do app.
+\item
+  We will keep asking for choice until the user decides to quit.
+\item
+  We have created an empty array in the beginning.
+\item
+  If user enters new, and enters a todo. The todo is pushed into the
+  array.
+\item
+  If the user wants to view his todo, then we will parse through the
+  todo array.
+\item
+  i+1 is used to show first todo index as 1.
+\item
+  if choice is delete, we will ask user for the index of todo to delete
+  and parse it to int as prompt accepts input as string.
+\item
+  Then we will check if the input entered by the user in prompt is
+  actually a number or not.
+\item
+  If it is NaN(that is isNaN is true), then the first condition will get
+  false and the else loop will be executed and valid index will be
+  asked.
+\item
+  If it is not NaN, then the first condition will get true and the if
+  loop will be executed.
+\item
+  In the if loop, we will make use of splice to remove the element.
+\item
+  remove-1 is used as the index is shown incremented as discussed in
+  point 6.
+\item
+  Then one element is removed at that index and the deleted index and
+  the name of the deleted todo is shown on window.
+\end{itemize}
+
+\hypertarget{functions}{%
+\subsubsection{Functions}\label{functions}}
+
+\hypertarget{introduction-1}{%
+\paragraph{Introduction}\label{introduction-1}}
+
+\begin{itemize}
+\tightlist
+\item
+  Functions are reusable procedures
+\item
+  Functions allow us to write reusable, modular code.
+\item
+  We define a ``chunk'' of code that we can execute at a later point.
+\item
+  We use them all the time.
+\item
+  It is a 2 step process
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    We need to define the function
+  \item
+    We need to run the function
+  \end{enumerate}
+\item
+  Defining a function
+  \texttt{JS\ \ \ \ \ function\ funcName()\{\ \ \ \ \ \ \ \ \ //do\ something\ \ \ \ \ \}}
+\item
+  Always define the function before you use them.
+\item
+  Also, technically functions are objects behind the scenes.
+\end{itemize}
+
+\hypertarget{arguments}{%
+\paragraph{Arguments}\label{arguments}}
+
+\begin{itemize}
+\tightlist
+\item
+  We can also write functions that accept inputs, called arguments !
+\item
+  We have seen this before
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    ``hello''.indexOf(`h') //We pass `h' as argument here
+  \item
+    nums.push(5,6,7)
+  \end{enumerate}
+\item
+  Example
+  \texttt{JS\ \ \ \ \ function\ greet(person)\{\ //Parameter\ \ \ \ \ \ \ \ \ console.log(\textasciigrave{}Hi,\ \$\{person\}\ !\textasciigrave{});\ \ \ \ \ \}\ \ \ \ \ greet("Yash")\ //Arguments}
+\item
+  If an expected argument is not passed to the function, it's gonna have
+  a value of undefined.
+\item
+  And if an extra argument is passed to the function, it accepts the
+  first argument and discards the second.
+\item
+  This happens only in Javascript and not in other languages.
+\item
+  \textbf{Functions with Multiple Arguments}
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    We can pass multiple arguments in a function.
+  \item
+    The arguments are matched to the parameters with respect to the
+    order.. That is first parameter will hold the value of first
+    argument, second of second argument and so on.
+  \end{enumerate}
+\end{itemize}
+
+\hypertarget{return-statement}{%
+\paragraph{Return Statement}\label{return-statement}}
+
+\begin{itemize}
+\tightlist
+\item
+  return keyword is used to capture the return value of a function to a
+  variable.
+\item
+  The return statement ends function execution AND specifies the value
+  to be returned by that function.
+\item
+  That is statements after the return keyword in a function are not
+  executed.
+\end{itemize}
+
+\hypertarget{leveling-up-our-functions}{%
+\subsubsection{Leveling up our
+Functions}\label{leveling-up-our-functions}}
+
+\hypertarget{scope}{%
+\paragraph{Scope}\label{scope}}
+
+\begin{itemize}
+\tightlist
+\item
+  Scope - Variable ``visibility''
+\item
+  The location where a variable is defined dictates where we have access
+  to that variable.
+\item
+  Variables we define inside a function are scoped to that function,
+  therefore if we use a function variable outside a function, then we
+  get an error.
+\item
+  Example
+  \texttt{JS\ \ \ \ \ let\ msg="I\ am\ on\ water!"\ \ \ \ \ function\ helpMe()\{\ \ \ \ \ \ \ \ \ let\ msg\ =\ "I\ am\ on\ fire!";\ \ \ \ \ \ \ \ \ console.log(msg);\ \ \ \ \ \}\ \ \ \ \ \ \ \ console.log(msg);\ //\ I\ am\ on\ water!}
+  Here the msg is scoped to the helpMe function.
+\item
+  If there is a variable defined by the same name in the function, in
+  the function scope, then the closer reference will be used. That is in
+  a function for console.log closer, if there is a variable with the
+  same name as outside the function, the function's variable will be
+  used, else the outer variable.
+\item
+  \textbf{In case of let, the variables defined inside the function are
+  not usable outside it.}
+\item
+  Example
+  \texttt{JS\ \ \ \ \ let\ bird\ =\ "mandarin\ duck"\ \ \ \ \ function\ birdWatch()\{\ \ \ \ \ \ \ \ \ let\ bird\ =\ "goldenpheasant";\ \ \ \ \ \ \ \ \ bird;\ //goldenpheasant\ \ \ \ \ \}\ \ \ \ \ bird;\ //mandarin\ duck}
+\item
+  Although, if you declare a variable outside the function, change it in
+  function, call the function and then use it. Then you can get the
+  changed value inside the function PROVIDED it is not declared inside
+  the function.
+\item
+  This also means that a variable declared outside the function is
+  available to the function too.
+\item
+  Variables which are defined outside of a function block have Global
+  scope. This means they can be seen everywhere in your Javascript code.
+\item
+  Also in order to use it, you don't need use global keyword in a
+  function unlike python where if you want to modify the same global
+  variable, you need to specify it as global.
+\end{itemize}
+
+\hypertarget{block-scope}{%
+\paragraph{Block Scope}\label{block-scope}}
+
+\begin{itemize}
+\tightlist
+\item
+  Variables defined in a block are just scoped to the block.
+\item
+  Blocks refers to anytime we see curly braces except for a function.
+\item
+  Example :
+  \texttt{JS\ \ \ \ \ let\ radius\ =\ 8;\ \ \ \ \ if\ (radius\textgreater{}0)\{\ \ \ \ \ \ \ \ \ const\ PI\ =\ 3.14;\ \ \ \ \ \ \ \ \ let\ circ\ =\ 2*PI*radius;\ \ \ \ \ \}\ \ \ \ \ console.log(radius);\ //8\ \ \ \ \ console.log(PI);\ //Not\ Defined\ \ \ \ \ console.log(circ);\ //Not\ Defined}
+\item
+  Here, PI and circ are scoped to the block
+\item
+  Same as functions, if the variables are declared outside the block and
+  later modified in the block and then used outside, the output will be
+  changed value PROVIDED it is not declared inside the scope.
+\item
+  This also means that a variable declared outside the block is
+  available to the block too.
+\end{itemize}
+
+\hypertarget{declarations}{%
+\paragraph{Declarations}\label{declarations}}
+
+\begin{itemize}
+\tightlist
+\item
+  Using var keyword, variables are scoped to functions but they are not
+  scoped to blocks.
+\item
+  That is, when var keyword is used inside a function, the variable is
+  not available outside the function, however, in case of blocks when
+  var is used, the variable is available outside the block as well.
+\item
+  let and const are block and function scoped.
+\item
+  When you have local and global variables with the same name , the
+  local variable takes a precedence over the global variable.
+\item
+  It is usually recommended to avoid the use of var keyword.
+\end{itemize}
+
+\hypertarget{lexical-scope}{%
+\paragraph{Lexical Scope}\label{lexical-scope}}
+
+\begin{itemize}
+\item
+  An inner function nested inside of some parent function has access to
+  the scope or the variables in the scope of that outer function.
+\item
+  Example ```JS function outer()\{ let hero = ``Rune King Thor'';
+
+\begin{verbatim}
+  function inner(){
+      lt cryForHelp = `${hero}, please save me !`
+      console.log(cryForHelp);
+  }
+  inner();
+\end{verbatim}
+
+  \} ```
+\item
+  If something exists in outer(), we have access to it in inner() but
+  this doesn't work the either way.
+\end{itemize}
+
+\hypertarget{scopes-final}{%
+\paragraph{Scopes Final}\label{scopes-final}}
+
+\begin{itemize}
+\tightlist
+\item
+  So, there are scopes such as function scope, block scope and lexical
+  scope.
+\item
+  Function scope
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Variables declared inside the function are scoped to the function.
+  \item
+    If two variables with same name are declared, then the one having
+    closer reference will be used.
+  \item
+    We can declare a variable, \textbf{change} the variable in function,
+    then call the function and then can use it in program outside of
+    that particular function.
+  \item
+    Variables declared outside the function are available to the
+    function but not vice-versa
+  \end{itemize}
+\item
+  Block Scope
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Just as functions, variables declared in the block are just scoped
+    to the block.
+  \item
+    Blocks refer to anytime we see curly braces except for a function
+    such as if, for, while, etc.
+  \item
+    Rest it has all properties same as functions except for one thing
+    and that is var keyword.
+  \item
+    var keyword is not block-scoped and is just function scoped or
+    globally-scoped.
+  \item
+    That is variables declared using var keyword in the blocks, is
+    available to the global scope as well.
+  \item
+    However, it is recommended to avoid use of var keyword and just use
+    let and const and hence, block and function scoped are usually same
+    for variables declared with these two declarations.
+  \end{itemize}
+\item
+  Lexical Scope
+
+  \begin{itemize}
+  \tightlist
+  \item
+    An inner function nested inside of an outer parent function has
+    access to the variables in the scope of that outer function.
+  \item
+    However, it is not the same case vice-versa.
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{function-expressions}{%
+\paragraph{Function Expressions}\label{function-expressions}}
+
+\begin{itemize}
+\tightlist
+\item
+  There is a different way of defining a function and it actually
+  involves storing the function in a variable.
+\item
+  Example
+  \texttt{JS\ \ \ \ \ const\ square\ =\ function(num)\{\ \ \ \ \ \ \ \ \ \ return\ num*num;\ \ \ \ \ \}\ \ \ \ \ square(7);}
+\item
+  The above is a function expression, the right side after the variable
+  add creates a function.
+\item
+  This function is stored in a variable that is square.
+\item
+  It is same as storing variable, object, array or a number. It is the
+  same exact concept.
+\item
+  It is used in same way as any other function.
+\item
+  Here square is not the name of the function but name of the variable.
+  That is we are storing a function with no name inside of a variable.
+\item
+  Whereas in normal cases, we make a function with its own name. Both
+  behave the exact same way.
+\item
+  The first case is just like storing a value in variable. Example
+
+  \begin{itemize}
+  \tightlist
+  \item
+    const PI = 3.14
+  \item
+    3.14 does not have a name but the variable(or container) does have a
+    name.
+  \end{itemize}
+\item
+  Functions are values in Javascript, we can store them, we can pass
+  them around just like number, array, string. Javascript considers
+  functions just like any other value
+\item
+  If you call the square as square, you'll be returned the entire
+  function and to use it you have to call it by doing square() just like
+  normal functions.
+\end{itemize}
+
+\hypertarget{higher-order-functions-important}{%
+\paragraph{Higher Order Functions
+(Important)}\label{higher-order-functions-important}}
+
+\begin{itemize}
+\item
+  Higher order functions are functions that work with other functions so
+  that they operate on/with other functions.
+\item
+  They can
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    Accept other functions as arguments.
+  \item
+    Return a function.
+  \end{enumerate}
+\item
+  Function as arguments example: ```JS function callTwice(func)\{
+  func(); func(); \}
+
+  function laugh()\{ console.log(``HAHAHAHAHAHA'') \} callTwice(laugh)
+  ```
+\item
+  Here, a mistake not to be made is passing laugh as laugh().
+\item
+  Because what this will do is it will execute the laugh and output the
+  result and then pass ``HAHAHA\ldots.'' as an argument.
+\item
+  But this is not what we want to do, what we want to do is pass through
+  the value of the function i.e laugh so that inside of callTwice it can
+  be executed.
+\end{itemize}
+
+\hypertarget{returning-functions-important}{%
+\paragraph{Returning Functions
+(Important)}\label{returning-functions-important}}
+
+\begin{itemize}
+\tightlist
+\item
+  Refer the Returning functions code.
+\item
+  If you call the makeMysteryfunc(), it will return the entire function.
+\item
+  You need to capture the entire return value.
+\item
+  Most important thing to remember is, if you are calling the main
+  function, you need to save the function in a variable. And then call
+  the variable with the inner function's parameters.
+\end{itemize}
+
+\hypertarget{methods}{%
+\paragraph{Methods}\label{methods}}
+
+\begin{itemize}
+\tightlist
+\item
+  We can add functions as properties on objects.
+\item
+  We call them methods.
+\item
+  Example to create a method
+  \texttt{JS\ \ \ \ \ const\ math\ =\ \{\ \ \ \ \ \ \ \ \ multiply\ :\ function(x,y)\{\ \ \ \ \ \ \ \ \ \ \ \ \ return\ x*y;\ \ \ \ \ \ \ \ \ \},\ \ \ \ \ \ \ \ \ divide\ :\ function(x,y)\{\ \ \ \ \ \ \ \ \ \ \ \ \ return\ x/y;\ \ \ \ \ \ \ \ \ \},\ \ \ \ \ \ \ \ \ square\ :\ function(x)\{\ \ \ \ \ \ \ \ \ \ \ \ \ return\ x*x;\ \ \ \ \ \ \ \ \ \}\ \ \ \ \ \};}
+\item
+  Some built-in methods are toUpperCase(), push(), indexOf()
+\item
+  Shorthand method to use Methods in Javascript
+  \texttt{JS\ \ \ \ \ const\ math\ =\ \{\ \ \ \ \ \ \ \ \ blah\ :\ \textquotesingle{}Hi\ !\textquotesingle{},\ \ \ \ \ \ \ \ \ add(x,y)\{\ \ \ \ \ \ \ \ \ \ \ \ \ return\ x+y;\ \ \ \ \ \ \ \ \ \},\ \ \ \ \ \ \ \ \ multiply(x,y)\{\ \ \ \ \ \ \ \ \ \ \ \ \ return\ x*y;\ \ \ \ \ \ \ \ \ \}\ \ \ \ \ \}\ \ \ \ \ math.add(50,60)\ //110}
+\end{itemize}
+
+\hypertarget{this}{%
+\paragraph{This}\label{this}}
+
+\begin{itemize}
+\tightlist
+\item
+  Use the keyword this to access other properties of the same object.
+\item
+  Example
+  \texttt{JS\ \ \ \ \ const\ person\ =\ \{\ \ \ \ \ \ \ \ \ first\ :\ \textquotesingle{}Yash\textquotesingle{},\ \ \ \ \ \ \ \ \ last\ :\ \textquotesingle{}Thakkar\textquotesingle{},\ \ \ \ \ \ \ \ \ fullName()\{\ \ \ \ \ \ \ \ \ \ \ \ \ return\ \textasciigrave{}\$(this.first)\ \$(this.last)\textasciigrave{}\ \ \ \ \ \ \ \ \ \}\ \ \ \ \ \}\ \ \ \ \ person.fullName()\ //Yash\ Thakkar\ \ \ \ \ person.last\ =\ ""\ \ \ \ \ person.fullName()\ //Yash}
+\item
+  The value of `this' can change and it depends on the invocation
+  context of the function it is used in.
+\item
+  That is it depends on how we call the function.
+\item
+  Usually when we use a method, like person.fullName(), the object
+  before the dot(.) is invoked. So the value for the this.first would be
+  key first of object person.
+\item
+  However when we do something like,
+  \texttt{JS\ \ \ \ \ const\ fullName2\ =\ person.fullName;\ \ \ \ \ fullName2();}
+\item
+  The fullName2() does not refer to the person object.
+\item
+  The fullName2() references to the \textbf{window object which is the
+  by default value as there is not dot(.) operator} before the
+  fullName2() variable and hence it doesn't refer to any object.
+\item
+  When you create any function, it is added to the window although you
+  never wrote the window anywhere.
+\end{itemize}
+
+\hypertarget{try-catch}{%
+\paragraph{Try-Catch}\label{try-catch}}
+
+\begin{itemize}
+\tightlist
+\item
+  Try catch are two statements in Javascript that go together.
+\item
+  They have to do with errors and exceptions in Javascript.
+\item
+  Specifically, they have to do with catching errors and preventing them
+  from breaking or stopping the execution of our code.
+\item
+  We can't have just try we also need to have catch which is a block of
+  code that will run if there was an exception or error generated inside
+  of the try block.
+\item
+  Generally, code after an error is not executed and the execution of
+  the code stops at the point, the error is found.
+\item
+  However, using try/catch block we can avoid that.
+\item
+  Syntax:
+  \texttt{JS\ \ \ \ \ try\{\ \ \ \ \ \ \ \ \ code;\ \ \ \ \ \}\ \ \ \ \ except\ ({[}e{]})\{\ \ \ \ \ \ \ \ \ code\ in\ case\ of\ error;\ \ \ \ \ \}}
+\item
+  Here e is optional, and e is the error which usually is printed out in
+  case of an error. We can also print the error if required.
+\end{itemize}
+
+\hypertarget{arrays-and-callback-methods}{%
+\subsubsection{Arrays and Callback
+Methods}\label{arrays-and-callback-methods}}
+
+\hypertarget{for-each}{%
+\paragraph{For each}\label{for-each}}
+
+\begin{itemize}
+\tightlist
+\item
+  Reference -
+  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/Array/forEach
+\item
+  What for\_each does is present in the name itself, that is the
+  for\_each calls the function for each element in the array.
+\item
+  Accepts a callback function. Calls the function once per element in
+  the array.
+\item
+  It allows us to run some function i.e run some code once per item in
+  some array.
+\item
+  So whatever function we pass in, that function will be called once per
+  item where each item will be passed in to the function automatically.
+\item
+  \textbf{The parameter in the function represents each element of the
+  array}.
+\item
+  For example (refer the code)
+\item
+  In the code, the movie is the parameter and it represents each element
+  in the array.
+\item
+  Difference between for\_each and map -
+\item
+  https://codeburst.io/javascript-map-vs-foreach-f38111822c0f
+\item
+  In map, and filter, we cannot console.log() but rather we return the
+  array to a new variable whereas in forEach we can console.log() or
+  either mutate the array.
+\end{itemize}
+
+\hypertarget{map-method}{%
+\paragraph{Map Method}\label{map-method}}
+
+\begin{itemize}
+\tightlist
+\item
+  Reference -
+  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/Map
+\item
+  Map method creates a new array with the results of calling a callback
+  on every element in the array.
+\item
+  Example
+  \texttt{JS\ \ \ \ \ const\ texts\ =\ {[}\textquotesingle{}rofl\textquotesingle{},\ \textquotesingle{}lol\textquotesingle{},\ \textquotesingle{}omg\textquotesingle{},\ \textquotesingle{}ttyl\textquotesingle{}{]};\ \ \ \ \ const\ caps\ =\ texts.map(function(t)\{\ //The\ function\ parameter\ t\ represents\ each\ element\ of\ texts\ \ \ \ \ \ \ \ \ return\ t.toUpperCase();\ \ \ \ \ \})\ \ \ \ \ texts;\ //{[}"rofl","lol","omg","ttyl"{]}\ \ \ \ \ caps;\ {[}"ROFL",\ "LOL",\ "OMG",\ "TTYL"{]}}
+\end{itemize}
+
+\hypertarget{intro-to-arrow-functions}{%
+\paragraph{Intro to Arrow Functions}\label{intro-to-arrow-functions}}
+
+\begin{itemize}
+\item
+  Newer syntax for defining functions.
+\item
+  Syntactically compact alternative to a regular function expression.
+\item
+  Example ```JS const square = (x) =\textgreater\{ return x\emph{x; \}
+  This can also be written as(However this works for functions with just
+  one parameter) const square = x =\textgreater\{ return x}x; \}
+
+  const sum = (x,y) =\textgreater{} \{ return x + y; \} ```
+\end{itemize}
+
+\hypertarget{implicit-arrow-function}{%
+\paragraph{Implicit Arrow Function}\label{implicit-arrow-function}}
+
+\begin{verbatim}
+Implicit Return - All these functions do the same thing.
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  const isEven = function(num)\{ //regular function expression return
+  num\%2==0 \}
+\item
+  const isEven = (num) =\textgreater{} \{ //arrow function with parens
+  around param return num \% 2 == 0 \}
+\item
+  const isEven = num =\textgreater{} \{ //no parens around params return
+  num \% 2 == 0 \}
+\item
+  const isEven = num =\textgreater{} ( //implicit return num \% 2 == 0
+  );
+\item
+  const isEven = num =\textgreater{} num\%2 == 0; //one-linear implicit
+  return
+\item
+  Implicit returns just works when there's a single clear value to be
+  evaluated.
+\item
+  It doesn't work in the cases like this
+  \texttt{JS\ \ \ \ \ const\ rollDie\ =\ ()\ =\textgreater{}\ \{\ \ \ \ \ let\ greet\ =\ "Hello"\ \ \ \ \ return\ Math.floor(Math.random()*6+1)\ \ \ \ \ \}}
+\end{enumerate}
+
+\hypertarget{sorting-out-functions}{%
+\paragraph{Sorting out Functions}\label{sorting-out-functions}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Functions //Normal Functions function funcName({[}parameters{]})\{
+  //do something. \}
+\item
+  Function Expressions //Another way of writing Functions variable =
+  function({[}parameters{]})\{ //do something \}
+\item
+  Higher Order Functions //Functions that work with other functions and
+  can accept other functions as arguments and return a function function
+  funcName(funcParameter)\{ funcParameter(); \}
+\item
+  Returning functions // Can return a function but need to capture the
+  value of the outer function and then call the inner function function
+  funcName({[}parameters{]})\{ return function()\{ //Do something \} \}
+\item
+  Methods //Can add functions as properties on objects. variable objName
+  = \{ variable key : value, variable key : function({[}parameters{]})\{
+  code; \}, funcName({[}parameters{]})\{ //code \} \} objName.variable
+  //in case of a value variable objName.variable({[}parameters{]}) //in
+  case of a function variable
+\item
+  Arrow functions //Syntactically compact alternative to regular
+  function expressions. variable = ({[}parameters{]}) =\textgreater\{
+  //code return expression \} //You can also remove the parentheses in
+  arrow functions in case of a single parameter
+\item
+  Implicit return //Just works when single values are to be evaluated or
+  returned variable = (parameters) =\textgreater{} ( code //No need to
+  write return statement ) variable = parameter =\textgreater{}
+  expression //One linear implicit return
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Different methods
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  forEach //Allows us to run some function once per item in an array.
+  list.forEach(function({[}parameter{]})\{ //Here the parameter is used
+  to denote the elements in an array //code \}) list.forEach(function)
+\item
+  map //Allows us to create a new array with the results of calling a
+  call back on every element on the array. variable = list.map(function)
+\end{enumerate}
+
+\hypertarget{settimeout-setinterval}{%
+\paragraph{setTimeout, setInterval}\label{settimeout-setinterval}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Introduction}
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  These are the two functions that expects you to pass a callback
+  function in but they are not array methods.They have nothing to do
+  with arrays.
+\item
+  They are used for scheduling execution.
+\item
+  In other programming languages, it is known as sleep, pause where we
+  pause execution for some parameter time however in Javascript it is
+  not similar to pause(3000) or sleep(3000)
+\item
+  Reference for clearTimeout and clearInterval -
+  https://www.geeksforgeeks.org/javascript-cleartimeout-clearinterval-method/
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{setTimeout, setInterval, clearInterval}
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  setTimeout This function executes the function after set interval of
+  time. setTimeout(TimerHandler,timeout?:number) Here, the TimerHandler
+  is a function basically and timeout is how long something should take
+  or how long delay should be. 2.setInterval This function repeats the
+  function after set interval of time. setInterval(TImerHandler,
+  timeout)
+\item
+  clearInterval Everytime we call setInterval it gives an id or value
+  and we need to save the return value of setInterval, we can have whole
+  bunch of different setIntervals and we can specify which one we want
+  to stop by using this ID. id = setInterval(TimerHandler, timeout)
+  clearInterval(id)
+\end{enumerate}
+
+\hypertarget{filter-method}{%
+\paragraph{Filter Method}\label{filter-method}}
+
+\begin{itemize}
+\tightlist
+\item
+  Creates a new array with all elements that pass the test implemented
+  by the provided function.
+\item
+  Example
+  \texttt{JS\ \ \ \ \ const\ nums\ =\ {[}9,8,7,6,5,4,3,2,1{]}\ \ \ \ \ \ const\ odds\ =\ nums.filter(n\ =\textgreater{}\ \{\ \ \ \ \ \ \ \ \ return\ n\%2\ ==\ 1;\ //our\ callback\ returns\ true\ or\ false\ \ \ \ \ \ \ \ \ //if\ it\ returns\ true,\ n\ is\ added\ to\ filtered\ array\ \ \ \ \ \})\ \ \ \ \ //{[}9,7,5,3,1{]}}
+\item
+  Example 2
+  \texttt{JS\ \ \ \ \ const\ smallNums\ =\ nums.filter(n\ =\textgreater{}\ n\textless{}5);\ \ \ \ \ {[}4,3,2,1{]}}
+\item
+  So in short if the function passed to the filter returns true for a
+  given element, filter will return that particular element.
+\end{itemize}
+
+\hypertarget{some-and-every}{%
+\paragraph{Some and Every}\label{some-and-every}}
+
+\begin{itemize}
+\tightlist
+\item
+  Both of them are very similar and they are boolean methods meaning
+  they return true or false
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Sum method
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \tightlist
+  \item
+    tests whether some elements in the array pass the provided function.
+    It returns a Boolean value.
+  \end{enumerate}
+\item
+  Every method
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \tightlist
+  \item
+    tests whether all elements in the array pass the provided function.
+    It returns a Boolean value.
+  \end{enumerate}
+\item
+  Example ```JS const words = {[}``dog'', ``dig'', ``log'', ``bag'',
+  ``wag''{]};
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \item
+    Every words.every(word =\textgreater{} \{ return word.length == 3;
+    \})//true
+
+    Some words.some(word =\textgreater{} \{ return word.length == 3;
+    \})//true
+  \item
+    Every words.every(word =\textgreater{} word{[}0{]} === ``d'')
+    //false
+
+    Some words.some(word =\textgreater{} word{[}0{]} === ``d'') //true
+  \item
+    Every words.every(w =\textgreater\{ let last\_letter =
+    w{[}w.length-1{]} return last\_letter === ``g''; \}) //true
+
+    Some words.every(w =\textgreater\{ let last\_letter =
+    w{[}w.length-1{]} return last\_letter === ``g''; \}) //true ```
+  \end{enumerate}
+\end{enumerate}
+
+\hypertarget{reduce}{%
+\paragraph{Reduce}\label{reduce}}
+
+\begin{itemize}
+\tightlist
+\item
+  Executes a reducer function on each element of the array, resulting in
+  a single value.
+\item
+  Example
+  \texttt{JS\ \ \ \ \ {[}3,5,7,9,11{]}.reduce((accumulator,\ currentvalue)\ =\textgreater{}\{\ \ \ \ \ \ \ \ \ return\ accumulator\ +\ currentvalue;\ \ \ \ \ \})}
+\item
+  Accumulator will be a thing, which we are reducing down to.
+  Accumulator variable in above case will hold the sum, current value
+  represents each individual element of the array.
+\item
+  Reduce in javascript works in the same way as that of Python, that is
+  it does sequential computation.
+\item
+  Accumulator will be initially the first element of the array, which in
+  the above case, is 3 and then gets changed according to the operation
+  with the current value and currentvalue will get swapped after each
+  callback and in the above case they are 5,7,9 and 11.
+\end{itemize}
+
+\hypertarget{this-in-arrow-functions-refer-code}{%
+\paragraph{This in Arrow Functions (Refer
+Code)}\label{this-in-arrow-functions-refer-code}}
+
+\begin{itemize}
+\item
+  \textbf{this keyword in arrow functions}
+\item
+  `this' keyword in arrow functions behaves much differently in arrow
+  functions than in normal functions.
+\item
+  Inside of an arrow function, the keyword this is just going to refer
+  to the scope that it was created in.
+\item
+  So in this case, the keyword this refers to the window object just
+  similar to the previous section where we pointed an object function to
+  a new variable.
+\item
+  \textbf{Understanding the arrow\_this.js code}
+\item
+  person is the object
+\item
+  thisPrinter is a NORMAL function which returns person object on
+  printing this.
+\item
+  fullName function is also a NORMAL function which also refers to the
+  person object.
+\item
+  Now, fullName2() is an ARROW function, and it refers to the window
+  object. Therefore, this.firstName and this.lastName will print as
+  undefined.
+\item
+  In shoutName, the NORMAL function shoutName actually refers to the
+  person object BUT the NORMAL setTimeout function inside the shoutname
+  function refers to window object.
+\item
+  Whereas in shoutName2, the setTimeout ARROW function has the same
+  value of this as that of shoutName2 function and hence it will refer
+  to the person object.
+\item
+  Therefore in short,
+\item
+  A nested NORMAL function or a NORMAL function in a NORMAL function
+  does not refer to the same `this' keyword that the parent function is
+  referring and hence it refers to window object. //code line 37 and
+  here for this.firstName it will print it's parent function firstName
+  that is hello, in case of firstName not defined in parent function, it
+  will print undefined.
+\item
+  A nested arrow function or an arrow function in a NORMAL function
+  refers to the same `this' keyword that the parent function is
+  referring. //code line 45
+\item
+  Arrow functions by themselves in an object does not refer `this' to
+  the object and hence it refers to the window object.
+\item
+  Therefore normal functions must be used in an object in order to use
+  the this keyword however if you want to use `this' in a nested
+  function, you may use arrow functions.
+\end{itemize}
+
+\hypertarget{arrays-and-callback-methods-1}{%
+\subsubsection{Arrays and Callback
+Methods}\label{arrays-and-callback-methods-1}}
+
+\hypertarget{for-each-1}{%
+\paragraph{For each}\label{for-each-1}}
+
+\begin{itemize}
+\tightlist
+\item
+  Reference -
+  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/Array/forEach
+\item
+  What for\_each does is present in the name itself, that is the
+  for\_each calls the function for each element in the array.
+\item
+  Accepts a callback function. Calls the function once per element in
+  the array.
+\item
+  It allows us to run some function i.e run some code once per item in
+  some array.
+\item
+  So whatever function we pass in, that function will be called once per
+  item where each item will be passed in to the function automatically.
+\item
+  \textbf{The parameter in the function represents each element of the
+  array}.
+\item
+  For example (refer the code)
+\item
+  In the code, the movie is the parameter and it represents each element
+  in the array.
+\item
+  \href{https://codeburst.io/javascript-map-vs-foreach-f38111822c0f}{Difference
+  between for\_each and map}
+\item
+  In map, and filter, we cannot console.log() but rather we return the
+  array to a new variable whereas in forEach we can console.log() or
+  either mutate the array.
+\end{itemize}
+
+\end{document}

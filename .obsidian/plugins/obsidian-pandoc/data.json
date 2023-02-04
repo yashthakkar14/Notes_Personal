@@ -1,0 +1,15 @@
+{
+  "showCLICommands": true,
+  "addExtensionsToInternalLinks": "html",
+  "injectAppCSS": "light",
+  "injectThemeCSS": false,
+  "customCSSFile": "D:\\Notes\\.obsidian\\snippets\\obsidian-pagebreaks.css",
+  "displayYAMLFrontmatter": false,
+  "linkStrippingBehaviour": "unchanged",
+  "highDPIDiagrams": true,
+  "pandoc": "",
+  "pdflatex": null,
+  "outputFolder": null,
+  "extraArguments": "--toc --template C:\\Users\\yasht\\AppData\\Local\\Pandoc\\templates\\eisvogel.latex",
+  "exportFrom": "md"
+}

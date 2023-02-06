@@ -26,10 +26,10 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Quick Notes.md",
+                "file": "Data Structures and Algorithms/cpp.md",
                 "mode": "source",
                 "backlinks": false,
-                "source": false
+                "source": true
               }
             }
           }
@@ -100,7 +100,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Quick Notes.md",
+                "file": "Data Structures and Algorithms/cpp.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -117,7 +117,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Quick Notes.md"
+                "file": "Data Structures and Algorithms/cpp.md"
               }
             }
           },
@@ -150,15 +150,15 @@
   },
   "active": "5bb85901fefea541",
   "lastOpenFiles": [
-    "Job Notes/Main Tasks/(CURRENT) Logitech Scrapers.md",
-    "Daily Notes/January/02-01-2023.md",
+    "Data Structures and Algorithms/Love Babbar Notes/Love Babbar Notes.md",
+    "Data Structures and Algorithms/Data-Structures-Notes/Data-Structures-Notes.md",
+    "Data Structures and Algorithms/Data-Structures-Notes/Data Structures Succinctly Part 2.pdf",
+    "Data Structures and Algorithms/Untitled.md",
+    "Data Structures and Algorithms/cpp.pdf",
+    "Data Structures and Algorithms/Data-Structures-Notes/AlgorithmsNotesForProfessionals.pdf",
+    "Daily Notes/February/06-02-2023.md",
     "Quick Notes.md",
-    "Job Notes/Supporting Tasks/Croma Scraper.md",
-    "Job Notes/Main Tasks/(NOT STARTED) Dealshare Project.md",
-    "Job Notes/Main Tasks/(NOT STARTED) Search Tool.md",
-    "Daily Notes/February/04-02-2023.md",
-    "Daily Notes/February/03-02-2023.md",
-    "Daily Notes/February/02-02-2023.md",
-    "Job Notes/Main Tasks/(CURRENT) Varietz API.md"
+    "Job Notes/Main Tasks/(CURRENT) Logitech Scrapers.md",
+    "Daily Notes/January/02-01-2023.md"
   ]
 }

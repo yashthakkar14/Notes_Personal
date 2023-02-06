@@ -8,19 +8,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "0fce89a5c0aecac3",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Quick Notes.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
-          },
-          {
             "id": "e77c78ac1e3583b9",
             "type": "leaf",
             "state": {
@@ -46,7 +33,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -146,8 +134,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 409
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -161,9 +148,10 @@
       "audio-recorder:Start/stop recording": false
     }
   },
-  "active": "0fce89a5c0aecac3",
+  "active": "5bb85901fefea541",
   "lastOpenFiles": [
     "Job Notes/Main Tasks/(CURRENT) Logitech Scrapers.md",
+    "Daily Notes/January/02-01-2023.md",
     "Quick Notes.md",
     "Job Notes/Supporting Tasks/Croma Scraper.md",
     "Job Notes/Main Tasks/(NOT STARTED) Dealshare Project.md",
@@ -171,7 +159,6 @@
     "Daily Notes/February/04-02-2023.md",
     "Daily Notes/February/03-02-2023.md",
     "Daily Notes/February/02-02-2023.md",
-    "Job Notes/Main Tasks/(CURRENT) Varietz API.md",
-    "Job Notes/Main Tasks/(DONE) KisanKonnect Weekly Report.md"
+    "Job Notes/Main Tasks/(CURRENT) Varietz API.md"
   ]
 }

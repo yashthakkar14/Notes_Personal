@@ -6,7 +6,7 @@ author: "Yash Thakkar"
 ```toc
 ```
 
-<div style="page-break-after: always; visibility:hidden">\pagebreak</div>
+<div style="page-break-after: always; visibility:hidden"></div>
 
 ## Arrays
 

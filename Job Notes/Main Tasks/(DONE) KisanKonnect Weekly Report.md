@@ -12,8 +12,8 @@
 - [x] Conditional Formatting.
 - [x] For the purpose of setting column width, try iterating through each of the rows and finding the max number of letters.
 - [x] For the section 6, top products with significant increase/decrease in competition price, format the city sections side by side.
-- [ ] Sku id bold.
-- [ ] Sku id convert to numbers.
+- [x] Sku id bold.
+- [x] Sku id convert to numbers.
 
 #### Improvement
 - [x] Look for difference between HAVING and WHERE.

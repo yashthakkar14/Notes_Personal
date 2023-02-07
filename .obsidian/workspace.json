@@ -26,6 +26,19 @@
             "state": {
               "type": "markdown",
               "state": {
+                "file": "Quick Notes.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": true
+              }
+            }
+          },
+          {
+            "id": "d03c7de5126a0640",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
                 "file": "Data Structures and Algorithms/cpp.md",
                 "mode": "source",
                 "backlinks": false,
@@ -34,7 +47,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -148,17 +161,17 @@
       "audio-recorder:Start/stop recording": false
     }
   },
-  "active": "5bb85901fefea541",
+  "active": "d03c7de5126a0640",
   "lastOpenFiles": [
-    "Data Structures and Algorithms/Love Babbar Notes/Love Babbar Notes.md",
-    "Data Structures and Algorithms/Data-Structures-Notes/Data-Structures-Notes.md",
-    "Data Structures and Algorithms/Data-Structures-Notes/Data Structures Succinctly Part 2.pdf",
-    "Data Structures and Algorithms/Untitled.md",
-    "Data Structures and Algorithms/cpp.pdf",
-    "Data Structures and Algorithms/Data-Structures-Notes/AlgorithmsNotesForProfessionals.pdf",
-    "Daily Notes/February/06-02-2023.md",
+    "Other/DSA Template.md",
     "Quick Notes.md",
-    "Job Notes/Main Tasks/(CURRENT) Logitech Scrapers.md",
-    "Daily Notes/January/02-01-2023.md"
+    "Daily Notes/February/07-02-2023.md",
+    "Job Notes/Supporting Tasks/Croma Scraper.md",
+    "Daily Notes/February/06-02-2023.md",
+    "Data Structures and Algorithms/cpp.pdf",
+    "Data Structures and Algorithms/Untitled.md",
+    "Data Structures and Algorithms/cpp.md",
+    "Data Structures and Algorithms/Love Babbar Notes/Love Babbar Notes.md",
+    "Data Structures and Algorithms/Data-Structures-Notes/Data-Structures-Notes.md"
   ]
 }

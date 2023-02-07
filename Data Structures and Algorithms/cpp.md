@@ -500,3 +500,4 @@ author: "Yash Thakkar"
 	- New char will be s2\[i\] and old char will be s2\[i-windowSize\].
 	- Then, we will again check if both the array have same values, then we will return 1.
 	- If not, then we will ignore and continue.
+

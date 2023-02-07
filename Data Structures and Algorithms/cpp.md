@@ -16,6 +16,7 @@ author: "Yash Thakkar"
 - Refer [Binary Search Notes](AlgorithmsNotesForProfessionals.pdf#page=179)
 - Linear search worst case: n comparisons, that is O(n) complexity. And the worst case is when the element is not present in the array.
 - **Binary search only applies in monotonic functions.**
+- hi
 - Monotonic functions are those functions which are either in increasing order or either in decreasing order.
 - If start = 2^31-1 and end = 2^31-1 which is the highest limit of the integer, then in line no.8 when we do $$(start+end)/2$$ , in the operation of $$(start+end)$$ , our integer can go out of bound and may give an error.
 - So we can modify this formula as $$s + \frac{(e-s)}{2}$$  which will result in $(2s+e-s)/2$ and in return it gives $(s+e)/2$ which is the correct original formula.

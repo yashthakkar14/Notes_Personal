@@ -11,4 +11,4 @@ openpyxl
 - jquery
 - axios
 - yts.mx
-- Swaminarayan city thane
+- Just dive in programming
